@@ -26,6 +26,19 @@ class DeviceModel
 		return $res->fetch_assoc();
 	}
 
+	public function getAll()
+	{
+		$data = array();
+		$res = Db::instance()->query('SELECT * FROM devices');
+
+		while ($row = $res->fetch_assoc())
+		{
+			$data[] = $row;
+		}
+
+		return $data;
+	}
+
 	public function add($id)
 	{
 		Db::instance()->query('
